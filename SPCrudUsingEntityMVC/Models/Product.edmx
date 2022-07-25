@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ArchiesDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tb_ProductMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ManufaturingDate" Type="date" Nullable="false" />
+          <Property Name="Discription" Type="varchar" MaxLength="500" />
+          <Property Name="Heading" Type="varchar" MaxLength="200" />
+          <Property Name="Isdeleted" Type="bit" />
+          <Property Name="Created" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="Modified" Type="int" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
+        <Function Name="GetEditId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_ADDPRODUCT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductName" Type="varchar" Mode="In" />
+          <Parameter Name="ManufaturingDate" Type="date" Mode="In" />
+          <Parameter Name="Discription" Type="varchar" Mode="In" />
+          <Parameter Name="Heading" Type="varchar" Mode="In" />
+          <Parameter Name="Isdeleted" Type="bit" Mode="In" />
+          <Parameter Name="Created" Type="int" Mode="In" />
+          <Parameter Name="CreatedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_EditPostId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="ProductName" Type="varchar" Mode="In" />
+          <Parameter Name="ManufaturingDate" Type="date" Mode="In" />
+          <Parameter Name="Discription" Type="varchar" Mode="In" />
+          <Parameter Name="Heading" Type="varchar" Mode="In" />
+          <Parameter Name="Isdeleted" Type="bit" Mode="In" />
+          <Parameter Name="Modified" Type="int" Mode="In" />
+          <Parameter Name="ModifiedOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_REMOVEPRODUCT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_SHOWPRODUCT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="ArchiesDbModelStoreContainer">
+          <EntitySet Name="tb_ProductMaster" EntityType="Self.tb_ProductMaster" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ArchiesDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tb_ProductMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ManufaturingDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Discription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Heading" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Isdeleted" Type="Boolean" />
+          <Property Name="Created" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="Modified" Type="Int32" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="ArchiesDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tb_ProductMaster" EntityType="Self.tb_ProductMaster" />
+          <FunctionImport Name="GetEditId" EntitySet="tb_ProductMaster" ReturnType="Collection(ArchiesDbModel.tb_ProductMaster)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ADDPRODUCT" EntitySet="tb_ProductMaster" ReturnType="Collection(ArchiesDbModel.tb_ProductMaster)">
+            <Parameter Name="ProductName" Mode="In" Type="String" />
+            <Parameter Name="ManufaturingDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Discription" Mode="In" Type="String" />
+            <Parameter Name="Heading" Mode="In" Type="String" />
+            <Parameter Name="Isdeleted" Mode="In" Type="Boolean" />
+            <Parameter Name="Created" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedOn" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_EditPostId" EntitySet="tb_ProductMaster" ReturnType="Collection(ArchiesDbModel.tb_ProductMaster)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="ProductName" Mode="In" Type="String" />
+            <Parameter Name="ManufaturingDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Discription" Mode="In" Type="String" />
+            <Parameter Name="Heading" Mode="In" Type="String" />
+            <Parameter Name="Isdeleted" Mode="In" Type="Boolean" />
+            <Parameter Name="Modified" Mode="In" Type="Int32" />
+            <Parameter Name="ModifiedOn" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_REMOVEPRODUCT" EntitySet="tb_ProductMaster" ReturnType="Collection(ArchiesDbModel.tb_ProductMaster)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SHOWPRODUCT" EntitySet="tb_ProductMaster" ReturnType="Collection(ArchiesDbModel.tb_ProductMaster)" />
+        </EntityContainer>
+        <ComplexType Name="GetEditId_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="ProductName" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="ManufaturingDate" Nullable="false" />
+          <Property Type="String" Name="Discription" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Heading" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="Isdeleted" Nullable="true" />
+          <Property Type="Int32" Name="Created" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Modified" Nullable="true" />
+          <Property Type="DateTime" Name="ModifiedOn" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SP_SHOWPRODUCT_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="ProductName" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="ManufaturingDate" Nullable="false" />
+          <Property Type="String" Name="Discription" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Heading" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="Isdeleted" Nullable="true" />
+          <Property Type="Int32" Name="Created" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Modified" Nullable="true" />
+          <Property Type="DateTime" Name="ModifiedOn" Nullable="true" Precision="23" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ArchiesDbModelStoreContainer" CdmEntityContainer="ArchiesDbEntities">
+          <EntitySetMapping Name="tb_ProductMaster">
+            <EntityTypeMapping TypeName="ArchiesDbModel.tb_ProductMaster">
+              <MappingFragment StoreEntitySet="tb_ProductMaster">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ManufaturingDate" ColumnName="ManufaturingDate" />
+                <ScalarProperty Name="Discription" ColumnName="Discription" />
+                <ScalarProperty Name="Heading" ColumnName="Heading" />
+                <ScalarProperty Name="Isdeleted" ColumnName="Isdeleted" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetEditId" FunctionName="ArchiesDbModel.Store.GetEditId">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_ADDPRODUCT" FunctionName="ArchiesDbModel.Store.SP_ADDPRODUCT" />
+          <FunctionImportMapping FunctionImportName="SP_EditPostId" FunctionName="ArchiesDbModel.Store.SP_EditPostId" />
+          <FunctionImportMapping FunctionImportName="SP_REMOVEPRODUCT" FunctionName="ArchiesDbModel.Store.SP_REMOVEPRODUCT" />
+          <FunctionImportMapping FunctionImportName="SP_SHOWPRODUCT" FunctionName="ArchiesDbModel.Store.SP_SHOWPRODUCT">
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

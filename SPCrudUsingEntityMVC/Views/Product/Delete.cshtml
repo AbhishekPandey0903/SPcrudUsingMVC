@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Delete";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-10">
+            <h1 class="mt-1">Delete Product</h1>
+
+            <h4 class="mt-5">Are you sure you want to Remove </h4>
+            <h4 >this Product from your List ? </h4>
+            <div class="row">
+                <div class="col-md-7">
+                    <button type="button" class="btn btn-outline-danger mt-2 w-25">@Html.ActionLink("  ✔  ", "DeletePost", new { id = ViewBag.id })</button>
+                    <button type="button" class="btn btn-outline-success mt-2 w-25">@Html.ActionLink("  🗙  ", "Index")</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
