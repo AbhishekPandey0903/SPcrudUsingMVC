@@ -26,6 +26,14 @@ namespace SPCrudUsingEntityMVC.Controllers
         [HttpPost]
         public ActionResult Create(tb_ProductMaster collection)
         {
+            if(collection.Discription == null)
+            {
+                collection.Discription = "";
+            }
+            if (collection.Heading == null)
+            {
+                collection.Heading = "";
+            }
             try
             {
                 SqlParameter params1 = new SqlParameter("@ProductName", collection.ProductName);
